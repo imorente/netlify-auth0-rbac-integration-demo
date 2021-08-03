@@ -4,3 +4,27 @@
     command = "npm run start"
 [dev]
   jwtSecret = "test"
+
+[[redirects]]
+  from = "/guest/*"
+  status = 200
+  force = true
+  conditions = {Role = ["guest"]}
+
+[[redirects]]
+  from = "/admin/*"
+  status = 200
+  force = true
+  conditions = {Role = ["admin"]}
+
+[[redirects]]
+  from = "/guest/*"
+  to = "/unauthorized"
+  status = 401
+  force = true
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/unauthorized"
+  status = 401
+  force = true
